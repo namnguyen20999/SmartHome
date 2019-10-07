@@ -6,4 +6,5 @@
     <color name="uiColor">#FFFFFF</color>
     <color name="loginColor">#F79696</color>
     <color name="labelColor">#2be6d3</color>
+    <color name="splash">#FFFFFF</color>
 </resources>

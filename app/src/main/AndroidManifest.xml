@@ -15,7 +15,9 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Menu" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
