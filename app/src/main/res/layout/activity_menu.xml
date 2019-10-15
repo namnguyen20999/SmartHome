@@ -99,6 +99,7 @@
                     android:padding="16dp"
                     android:gravity="center">
                     <ImageView
+                        android:id="@+id/camera"
                         android:src="@drawable/camera_motion"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
@@ -172,6 +173,7 @@
                     android:padding="16dp"
                     android:gravity="center">
                     <ImageView
+                        android:id="@+id/thermometer"
                         android:src="@drawable/thermometer"
                         android:layout_width="80dp"
                         android:layout_height="80dp">

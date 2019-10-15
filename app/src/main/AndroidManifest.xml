@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".doorSensor"></activity>
+        <activity android:name=".camera"></activity>
+        <activity android:name=".thermometer" />
+        <activity
+            android:name=".ventTest"
+            android:label="@string/title_activity_vent_test" />
+        <activity android:name=".doorSensor" />
         <activity
             android:name=".lightSensor"
             android:label="@string/title_activity_light_sensor"

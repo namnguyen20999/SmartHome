@@ -20,4 +20,11 @@
     <string name="confirm_password">Confirm password</string>
     <string name="email_address">Email Address</string>
     <string name="title_activity_light_sensor">lightSensor</string>
+    <string name="title_activity_vent_test">vent_test</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="high_speed">High Speed</string>
+    <string name="medium_speed">Medium Speed</string>
+    <string name="low_speed">Low Speed</string>
 </resources>
