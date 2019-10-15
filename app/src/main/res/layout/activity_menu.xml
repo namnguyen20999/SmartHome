@@ -135,7 +135,7 @@
                     android:padding="16dp"
                     android:gravity="center">
                     <ImageView
-                        android:id="@+id/feature1"
+                        android:id="@+id/feature2"
                         android:src="@drawable/door"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
@@ -208,7 +208,7 @@
                     android:padding="16dp"
                     android:gravity="center">
                     <ImageView
-                        android:id="@+id/feature1"
+                        android:id="@+id/ventilation"
                         android:src="@drawable/ventilation"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
@@ -244,10 +244,12 @@
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:gravity="center">
+
                     <ImageView
-                        android:src="@drawable/help"
+                        android:id="@+id/helpcntr"
                         android:layout_width="80dp"
-                        android:layout_height="80dp">
+                        android:layout_height="80dp"
+                        android:src="@drawable/help">
 
                     </ImageView>
 

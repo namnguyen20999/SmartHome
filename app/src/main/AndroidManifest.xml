@@ -13,6 +13,10 @@
             android:name=".lightSensor"
             android:label="@string/title_activity_light_sensor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ventControl"
+            android:label="ventControl"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Menu" />
         <activity android:name=".Register" />
         <activity
