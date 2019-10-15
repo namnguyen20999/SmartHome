@@ -12,3 +12,4 @@ public class thermometer extends AppCompatActivity {
         setContentView(R.layout.activity_thermometer);
     }
 }
+//Bao did this
