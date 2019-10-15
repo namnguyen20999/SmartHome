@@ -135,7 +135,7 @@
                     android:padding="16dp"
                     android:gravity="center">
                     <ImageView
-                        android:id="@+id/feature2"
+                        android:id="@+id/door"
                         android:src="@drawable/door"
                         android:layout_width="80dp"
                         android:layout_height="80dp">

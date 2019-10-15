@@ -7,27 +7,35 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Menu extends AppCompatActivity {
 
-    private ImageView feature1;
+    private ImageView light;
     private ImageView helpcntr;
     private ImageView ventilation;
+    private ImageView Door;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        feature1 = (ImageView) findViewById(R.id.feature1);
+        light = (ImageView) findViewById(R.id.feature1);
         helpcntr = (ImageView) findViewById(R.id.helpcntr);
         ventilation = (ImageView) findViewById(R.id.ventilation);
+        Door = (ImageView) findViewById(R.id.door);
 
-        feature1.setOnClickListener(new View.OnClickListener() {
+        light.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSensor();
+                openLight();
+            }
+        });
+        Door.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openDoor();
             }
         });
         helpcntr.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +54,18 @@ public class Menu extends AppCompatActivity {
                 openVentilation();
             }
         });
-    }
-        public void openSensor(){
+        }
+        public void openLight(){
             Intent intent =  new Intent(this, lightSensor.class);
             startActivity(intent);
         }
-    public void openVentilation(){
+        public void openVentilation(){
         Intent intent =  new Intent(this, ventControl.class);
         startActivity(intent);
-    }
+        }
+        public void openDoor(){
+        Intent intent = new Intent(this, Door.class);
+        startActivity(intent);
+        }
+
 }

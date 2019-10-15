@@ -1,33 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lightSensor">
+    android:background="@drawable/background">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <ImageView
+        android:id="@+id/bulb"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </ImageView>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_light_sensor" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:gravity="center"
+        android:text="Power"
+        android:textColor="#000000"
+        android:textOff="Off"
+        android:textOn="On"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:thumb="@drawable/sw_thumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toEndOf="@+id/bulb"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154"
+        app:showText="true"
+        app:track="@drawable/sw_track">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.appcompat.widget.SwitchCompat>
+
+    <ImageView
+        android:id="@+id/bulb1"
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bulb"
+        app:layout_constraintVertical_bias="0.254">
+
+    </ImageView>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Power"
+        android:textColor="#000000"
+        android:textOff="Off"
+        android:textOn="On"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:thumb="@drawable/sw_thumb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/switchButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/bulb1"
+        app:layout_constraintTop_toBottomOf="@+id/switchButton"
+        app:layout_constraintVertical_bias="0.36"
+        app:showText="true"
+        app:track="@drawable/sw_track">
+
+    </androidx.appcompat.widget.SwitchCompat>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Front Door"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/bulb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back Door"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/bulb1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bulb"
+        app:layout_constraintVertical_bias="0.56" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
