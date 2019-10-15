@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class Door extends AppCompatActivity implements View.OnClickListener{
+public class doorSensor extends AppCompatActivity implements View.OnClickListener{
 
     private Switch front1,backdoor,gar;
 
@@ -27,7 +27,7 @@ public class Door extends AppCompatActivity implements View.OnClickListener{
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.door);
+        setContentView(R.layout.activity_door_sensor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

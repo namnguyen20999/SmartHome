@@ -64,7 +64,7 @@ public class Menu extends AppCompatActivity {
         startActivity(intent);
         }
         public void openDoor(){
-        Intent intent = new Intent(this, Door.class);
+        Intent intent = new Intent(this, doorSensor.class);
         startActivity(intent);
         }
 
