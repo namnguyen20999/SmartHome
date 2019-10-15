@@ -2,12 +2,8 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -25,30 +21,30 @@ public class lightSensor extends AppCompatActivity {
 
         switchCompat = findViewById(R.id.switchButton);
         imageView = findViewById(R.id.bulb);
-        imageView.setImageDrawable(getDrawable(R.drawable.lbulboff));
+        imageView.setImageDrawable(getDrawable(R.drawable.light_bulboff));
 
         switchCompat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (switchCompat.isChecked()){
-                    imageView.setImageDrawable(getDrawable(R.drawable.lbulbon));
+                    imageView.setImageDrawable(getDrawable(R.drawable.light_bulbon));
                 } else {
-                    imageView.setImageDrawable(getDrawable(R.drawable.lbulboff));
+                    imageView.setImageDrawable(getDrawable(R.drawable.light_bulboff));
                 }
             }
         });
 
         switchCompat1 = findViewById(R.id.switchButton1);
         imageView2 = findViewById(R.id.bulb1);
-        imageView2.setImageDrawable(getDrawable(R.drawable.lbulboff1));
+        imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
 
         switchCompat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (switchCompat1.isChecked()){
-                    imageView2.setImageDrawable(getDrawable(R.drawable.lbulbon1));
+                    imageView2.setImageDrawable(getDrawable(R.drawable.light_bulbon_1));
                 } else {
-                    imageView2.setImageDrawable(getDrawable(R.drawable.lbulboff1));
+                    imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
                 }
             }
         });

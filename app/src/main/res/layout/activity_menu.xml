@@ -63,7 +63,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/feature1"
-                        android:src="@drawable/light"
+                        android:src="@drawable/menu_light"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -100,7 +100,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/camera"
-                        android:src="@drawable/camera_motion"
+                        android:src="@drawable/menu_camera_motion"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -137,7 +137,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/door"
-                        android:src="@drawable/door"
+                        android:src="@drawable/menu_door"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -174,7 +174,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/thermometer"
-                        android:src="@drawable/thermometer"
+                        android:src="@drawable/menu_thermometer"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -211,7 +211,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/ventilation"
-                        android:src="@drawable/ventilation"
+                        android:src="@drawable/menu_ventilation"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -251,7 +251,7 @@
                         android:id="@+id/helpcntr"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/help">
+                        android:src="@drawable/menu_help">
 
                     </ImageView>
 
