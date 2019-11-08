@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1026083728659",
+    "firebase_url": "https://shdatabase-bc9ce.firebaseio.com",
+    "project_id": "shdatabase-bc9ce",
+    "storage_bucket": "shdatabase-bc9ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026083728659:android:87455168fb89b4117c7ee6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026083728659-d9e6jmskep8d030ig9t2vmr057ak7va8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYvrQKPkLi1WVs97W074fExZ5fuc1F5BA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026083728659-d9e6jmskep8d030ig9t2vmr057ak7va8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
