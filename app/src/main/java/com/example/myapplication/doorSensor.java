@@ -58,7 +58,7 @@ public class doorSensor extends AppCompatActivity implements View.OnClickListene
             }
         }
         if(v.getId() == R.id.backdoor){
-            
+
             if(backdoor.isChecked()){
                 Toast.makeText(getApplicationContext(),"Back Door: " +backdoor.getTextOn().toString(),Toast.LENGTH_SHORT).show();
             }
