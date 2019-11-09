@@ -21,24 +21,24 @@
         app:srcCompat="@drawable/home" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@drawable/round_usnpw"
         android:drawableStart="@drawable/icon_username_foreground"
         android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
+        android:hint="@string/email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.068"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passlogin"
         android:layout_width="300dp"
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
@@ -47,10 +47,10 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/userName"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         android:autofillHints="" tools:targetApi="o"/>
 
     <Button
@@ -58,18 +58,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round_btlogin"
-        android:onClick="OnLoginClick"
         android:text="@string/login"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/userName"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/passlogin"
         app:layout_constraintVertical_bias="0.104" />
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/register_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_new_account"
@@ -90,7 +89,7 @@
         android:text="@string/smart_home"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,10 +14,10 @@
         android:text="@string/register"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.135" />
 
     <EditText
@@ -46,13 +46,13 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/userName2"
+        app:layout_constraintEnd_toEndOf="@+id/fullname"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/userName2"
-        app:layout_constraintTop_toBottomOf="@+id/userName2" />
+        app:layout_constraintStart_toStartOf="@+id/fullname"
+        app:layout_constraintTop_toBottomOf="@+id/fullname" />
 
     <EditText
-        android:id="@+id/userName2"
+        android:id="@+id/fullname"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginBottom="388dp"
@@ -97,7 +97,7 @@
         app:srcCompat="@drawable/home" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"

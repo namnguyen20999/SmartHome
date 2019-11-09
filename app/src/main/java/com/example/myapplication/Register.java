@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
-import android.app.Activity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +12,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 
-public class Register extends Activity {
+public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     EditText mFullName, mEmail, mPassword, mPasswwordConf;
     Button mRegisterBtn;
@@ -24,12 +25,17 @@ public class Register extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-        mFullName = findViewById(R.id.userName2);
-        mEmail = findViewById(R.id.editText);
+        mFullName = findViewById(R.id.fullname);
+        mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.pswRegister);
         mPasswwordConf = findViewById(R.id.pswConfirm);
         mRegisterBtn = findViewById(R.id.button2);
         mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() != null){
+            openMainActivity();
+            finish();
+        }
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,9 +45,11 @@ public class Register extends Activity {
                 String pswconf = mPasswwordConf.getText().toString().trim();
                 String usn = mFullName.getText().toString().trim();
 
+
                 if (email.isEmpty()) {
                     mEmail.setError("Please enter email id");
                     mEmail.requestFocus();
+
                 } else if (password.isEmpty()) {
                     mPassword.setError("Please enter your password");
                     mPassword.requestFocus();
@@ -54,7 +62,6 @@ public class Register extends Activity {
                 }
 
                 // register user with Firebase
-                else {
 
 
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -62,15 +69,19 @@ public class Register extends Activity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Register.this, Menu.class);
-                                startActivity(intent);
+                                Intent intentOnComplete = new Intent(Register.this, Menu.class);
+                                startActivity(intentOnComplete);
                             } else {
-                                Toast.makeText(Register.this, "Error occurred", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Error Occurred, Please try again",Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-                }
+
             }
         });
+    }
+    public void openMainActivity(){
+        Intent intentMain = new Intent(Register.this,MainActivity.class);
+        startActivity(intentMain);
     }
 }
