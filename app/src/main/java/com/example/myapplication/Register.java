@@ -39,43 +39,36 @@ public class Register extends Activity {
                 String pswconf = mPasswwordConf.getText().toString().trim();
                 String usn = mFullName.getText().toString().trim();
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     mEmail.setError("Please enter email id");
                     mEmail.requestFocus();
-                }
-
-                else if(password.isEmpty()){
+                } else if (password.isEmpty()) {
                     mPassword.setError("Please enter your password");
                     mPassword.requestFocus();
-                }
-                else if(!(password).equals(pswconf)){
+                } else if (!(password).equals(pswconf)) {
                     mPasswwordConf.setError("Password does not match");
                     mPasswwordConf.requestFocus();
-                }
-                else if(usn.isEmpty()){
+                } else if (usn.isEmpty()) {
                     mFullName.setError("Please enter your full name");
                     mFullName.requestFocus();
                 }
 
                 // register user with Firebase
+                else {
 
-                else if(!(email.isEmpty() && password.isEmpty())) {
 
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Register.this,Menu.class);
+                                Intent intent = new Intent(Register.this, Menu.class);
                                 startActivity(intent);
                             } else {
-                                startActivity(new Intent(Register.this, MainActivity.class));
+                                Toast.makeText(Register.this, "Error occurred", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-                }
-                else {
-                    Toast.makeText(Register.this,"Error occurred" ,Toast.LENGTH_SHORT).show();
                 }
             }
         });
