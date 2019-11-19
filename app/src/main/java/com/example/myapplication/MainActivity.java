@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.passlogin);
         login = findViewById(R.id.button);
         mAuth = FirebaseAuth.getInstance();
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
