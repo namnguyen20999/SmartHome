@@ -4,35 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentChange.Type;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldPath;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.MetadataChanges;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.Query.Direction;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.ServerTimestamp;
-import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.firestore.Source;
-import com.google.firebase.firestore.Transaction;
-import com.google.firebase.firestore.WriteBatch;
-
-import android.app.usage.NetworkStats;
+import com.google.android.gms.tasks.OnSuccessListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -57,7 +34,7 @@ public class thermometer extends AppCompatActivity {
 
         // Create a temperature
         Map<String, Object> user = new HashMap<>();
-        user.put ("temperature" , 15);
+        user.put ("temperature measured" ,25);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final String userid = mAuth.getUid();
 // Add a new document with a generated ID
@@ -76,6 +53,27 @@ public class thermometer extends AppCompatActivity {
                     }
                 });
 
+                DocumentReference tempValue = db.collection("temperature").document(userid);
+                tempValue.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()){
+                            DocumentSnapshot doc = task.getResult();
+                            StringBuilder fields = new StringBuilder("");
+                            fields.append("Current Temperature is: ").append(doc.get("temperature measured"));
+                            Temp.setText(fields.toString());
+
+                        }
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+        /*
+
         db.collection("temperature")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -86,14 +84,18 @@ public class thermometer extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 Toast.makeText(getApplicationContext(),"Temperature received successfully",Toast.LENGTH_LONG).show();
-                                //String temper = document.getString("temperature");
-                                //Temp.setText(temper);
+                                String temper = document.getString("test");
+                                Temp.setText(temper);
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
+          */
+
+
+
     }
 }
 //Bao did this

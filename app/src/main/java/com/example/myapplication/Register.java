@@ -48,17 +48,17 @@ public class Register extends AppCompatActivity {
 
                 if (email.isEmpty()) {
                     mEmail.setError("Please enter email id");
-                    mEmail.requestFocus();
+                    return;
 
                 } else if (password.isEmpty()) {
                     mPassword.setError("Please enter your password");
-                    mPassword.requestFocus();
+                    return;
                 } else if (!(password).equals(pswconf)) {
                     mPasswwordConf.setError("Password does not match");
-                    mPasswwordConf.requestFocus();
+                    return;
                 } else if (usn.isEmpty()) {
                     mFullName.setError("Please enter your full name");
-                    mFullName.requestFocus();
+                    return;
                 }
 
                 // register user with Firebase
@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
-                                Intent intentOnComplete = new Intent(Register.this, Menu.class);
+                                Intent intentOnComplete = new Intent(Register.this, MainActivity.class);
                                 startActivity(intentOnComplete);
                             } else {
                                 Toast.makeText(getApplicationContext(),"Error Occurred, Please try again",Toast.LENGTH_LONG).show();
