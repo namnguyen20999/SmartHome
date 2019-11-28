@@ -1,25 +1,34 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class doorSensor extends AppCompatActivity implements View.OnClickListener{
 
     private Switch front1,backdoor,gar;
 
+    private static final String TAG = "Door";
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +70,7 @@ public class doorSensor extends AppCompatActivity implements View.OnClickListene
 
             if(backdoor.isChecked()){
                 Toast.makeText(getApplicationContext(),"Back Door: " +backdoor.getTextOn().toString(),Toast.LENGTH_SHORT).show();
+
             }
             else{
                 Toast.makeText(getApplicationContext(),"Back Door: "+backdoor.getTextOff().toString(),Toast.LENGTH_SHORT).show();
@@ -75,6 +85,27 @@ public class doorSensor extends AppCompatActivity implements View.OnClickListene
             }
         }
 
+    }
+    public void saveState(View v){
+
+        String state = front1.getText().toString();
+        Map<String, Object> states = new HashMap<>();
+        states.put("value", state );
+
+        db.collection("States").document("state").set(states)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(doorSensor.this,"Note Saved",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(doorSensor.this,"Note Saved",Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
     }
 }
 //Bao did this
