@@ -26,9 +26,14 @@ public class thermometer extends AppCompatActivity {
         setContentView(R.layout.activity_thermometer);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Temp = findViewById(R.id.temperature);
+
+        //Create data
+
         String path = "/userdata/"+ mAuth.getUid() + "/temperature";
         Temper = FirebaseDatabase.getInstance().getReference(path);
         addValue();
+
+        // Obtaining data from firebase and push to app
 
         Temper.addValueEventListener(new ValueEventListener() {
             @Override
@@ -43,6 +48,8 @@ public class thermometer extends AppCompatActivity {
             }
         });
     }
+
+    // Adding value to Firebase
     public void addValue() {
         Temp = findViewById(R.id.temperature);
         String tempValue = Temp.getText().toString().trim();
@@ -53,4 +60,3 @@ public class thermometer extends AppCompatActivity {
 
     }
 }
-//Bao did this
