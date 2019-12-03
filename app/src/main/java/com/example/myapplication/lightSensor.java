@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import java.util.concurrent.TimeUnit;
 
 public class lightSensor extends AppCompatActivity {
     private    SwitchCompat light1Switch;
@@ -24,8 +27,10 @@ public class lightSensor extends AppCompatActivity {
     private    ImageView imageView1;
     private    ImageView imageView2;
     private    Button doneButton;
-    private    String light1 = "Off";
-    private    String light2 = "Off";
+    private     String light1;
+    private     String light2;
+    private    String On = "On";
+    private    String Off = "Off";
     DatabaseReference lightDatabase;
 
 
@@ -38,8 +43,8 @@ public class lightSensor extends AppCompatActivity {
         light1Switch = (SwitchCompat) findViewById(R.id.switchButton);
         imageView1 = (ImageView) findViewById(R.id.bulb);
         imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
-        lightDatabase = FirebaseDatabase.getInstance().getReference("light");
-        String path = "/userdata/"+ mAuth.getUid() + "/light";
+        String path = "/userdata/" + mAuth.getUid() + "/light";
+        lightDatabase = FirebaseDatabase.getInstance().getReference(path);
         // Adding value to Firebase
 
         light1Switch.setOnClickListener(new View.OnClickListener() {
@@ -47,53 +52,44 @@ public class lightSensor extends AppCompatActivity {
             public void onClick(View v) {
                 if (light1Switch.isChecked()) {
                     imageView1.setImageDrawable(getDrawable(R.drawable.light_bulbon));
-                    light1 = "On";
+                    light1 = On;
                     addValue();
                 } else {
                     imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
-                    light1 = "Off";
+                    light1 = Off;
                     addValue();
                 }
             }
         });
         light2Switch = findViewById(R.id.switchButton1);
         imageView2 = findViewById(R.id.bulb1);
-        imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
+        // imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
         light2Switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (light2Switch.isChecked()){
+                if (light2Switch.isChecked()) {
                     imageView2.setImageDrawable(getDrawable(R.drawable.light_bulbon_1));
-                    light2 = "On";
+                    light2 = On;
                     addValue();
                 } else {
                     imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
-                    light2 = "Off";
+                    light2 = Off;
                     addValue();
                 }
             }
         });
-
         lightDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                light1 = dataSnapshot.child("light1").getValue().toString();
-                light2 = dataSnapshot.child("light2").getValue().toString();
-                if (light1 == "On") {
-                    imageView1.setImageDrawable(getDrawable(R.drawable.light_bulbon));
-                    light1Switch.setChecked(true);
+                if (dataSnapshot.child("light1").exists()) {
+                    light1 = dataSnapshot.child("light1").getValue(String.class);
+                    light2 = dataSnapshot.child("light2").getValue(String.class);
+                    checkValue();
                 }
                 else {
-                    imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
-                    //light1Switch.setChecked(false);
-                }
-                if (light2 == "On") {
-                    imageView2.setImageDrawable(getDrawable(R.drawable.light_bulbon));
-                    //light2Switch.setChecked(true);
-                }
-                else {
-                    imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff));
-                    //light2Switch.setChecked(false);
+                    light1 = Off;
+                    light2 = Off;
+                    addValue();
                 }
             }
 
@@ -102,8 +98,7 @@ public class lightSensor extends AppCompatActivity {
 
             }
         });
-
-        addValue();
+        //addValue();
     }
 
     /*
@@ -116,11 +111,26 @@ public class lightSensor extends AppCompatActivity {
       }
     });
     */
-
+    public void checkValue() {
+            if (light1.equals(On)) {
+                imageView1.setImageDrawable(getDrawable(R.drawable.light_bulbon));
+                light1Switch.setChecked(true);
+            } else {
+                imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
+                light1Switch.setChecked(false);
+            }
+            if (light2.equals(On)) {
+                imageView2.setImageDrawable(getDrawable(R.drawable.light_bulbon_1));
+                light2Switch.setChecked(true);
+            } else {
+                imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
+                light2Switch.setChecked(false);
+            }
+    }
 
     public void addValue() {
         String id = lightDatabase.push().getKey();
-        light Light = new light(light1, light2);
+        light Light = new light(id, light1, light2);
         lightDatabase.setValue(Light);
     }
 }
