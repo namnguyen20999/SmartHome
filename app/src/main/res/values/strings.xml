@@ -30,4 +30,10 @@
     <string name="register">Register</string>
     <string name="email">email</string>
     <string name="room_status_is">Room status is</string>
+    <string name="front_door">Front Door</string>
+    <string name="unlock">Unlock</string>
+    <string name="back_door">Back Door</string>
+    <string name="lock">Lock</string>
+    <string name="garage">Garage</string>
+
 </resources>

@@ -2,14 +2,14 @@ package com.example.myapplication;
 
 public class light {
     String Id;
-    boolean light1;
-    boolean light2;
+    String light1;
+    String light2;
 
-    public light() {
+    public light(String light1State, String light2State) {
 
     }
 
-    public light(String Id, boolean light1, boolean light2){
+    public light(String Id, String light1, String light2){
         this.Id = Id;
         this.light1 = light1;
         this.light2 = light2;
@@ -19,11 +19,11 @@ public class light {
         return Id;
     }
 
-    public boolean getLight1(){
+    public String getLight1(){
         return light1;
     }
 
-    public boolean getLight2(){
+    public String getLight2(){
         return light2;
     }
 }

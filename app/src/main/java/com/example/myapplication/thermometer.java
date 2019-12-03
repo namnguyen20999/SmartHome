@@ -18,7 +18,7 @@ public class thermometer extends AppCompatActivity {
 
     private TextView Temp;
     private String tempValue;
-    DatabaseReference Temper;
+    DatabaseReference tempData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,12 +30,12 @@ public class thermometer extends AppCompatActivity {
         //Create data
 
         String path = "/userdata/"+ mAuth.getUid() + "/temperature";
-        Temper = FirebaseDatabase.getInstance().getReference(path);
+        tempData = FirebaseDatabase.getInstance().getReference(path);
         addValue();
 
         // Obtaining data from firebase and push to app
 
-        Temper.addValueEventListener(new ValueEventListener() {
+        tempData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tempValue = dataSnapshot.child("temperature").getValue().toString();
@@ -53,10 +53,9 @@ public class thermometer extends AppCompatActivity {
     public void addValue() {
         Temp = findViewById(R.id.temperature);
         String tempValue = Temp.getText().toString().trim();
-        String id = Temper.push().getKey();
+        String id = tempData.push().getKey();
         long date = System.currentTimeMillis();
         temperature Temperature = new temperature(tempValue, id, date);
-        Temper.setValue(Temperature);
-
+        tempData.setValue(Temperature);
     }
 }
