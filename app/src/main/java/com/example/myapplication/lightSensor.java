@@ -16,17 +16,42 @@ import com.google.firebase.database.ValueEventListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.Toast;
 
-import java.util.concurrent.TimeUnit;
+
+class light {
+    String Id;
+    String light1;
+    String light2;
+
+    public light(String light1State, String light2State) {
+
+    }
+
+    public light(String Id, String light1, String light2){
+        this.Id = Id;
+        this.light1 = light1;
+        this.light2 = light2;
+    }
+
+    public String getId(){
+        return Id;
+    }
+
+    public String getLight1(){
+        return light1;
+    }
+
+    public String getLight2(){
+        return light2;
+    }
+}
+
 
 public class lightSensor extends AppCompatActivity {
     private    SwitchCompat light1Switch;
     private    SwitchCompat light2Switch;
     private    ImageView imageView1;
     private    ImageView imageView2;
-    private    Button doneButton;
     private     String light1;
     private     String light2;
     private    String On = "On";
@@ -39,10 +64,11 @@ public class lightSensor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_light_sensor);
-        doneButton = (Button) findViewById(R.id.button3);
         light1Switch = (SwitchCompat) findViewById(R.id.switchButton);
         imageView1 = (ImageView) findViewById(R.id.bulb);
         imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
+
+        // Setting path for Data
         String path = "/userdata/" + mAuth.getUid() + "/light";
         lightDatabase = FirebaseDatabase.getInstance().getReference(path);
         // Adding value to Firebase
@@ -63,7 +89,6 @@ public class lightSensor extends AppCompatActivity {
         });
         light2Switch = findViewById(R.id.switchButton1);
         imageView2 = findViewById(R.id.bulb1);
-        // imageView2.setImageDrawable(getDrawable(R.drawable.light_bulboff1));
         light2Switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +116,16 @@ public class lightSensor extends AppCompatActivity {
                     light2 = Off;
                     addValue();
                 }
+                if (dataSnapshot.child("light2").exists()){
+                    light1 = dataSnapshot.child("light1").getValue(String.class);
+                    light2 = dataSnapshot.child("light2").getValue(String.class);
+                    checkValue();
+                }
+                else {
+                    light1 = Off;
+                    light2 = Off;
+                    addValue();
+                }
             }
 
             @Override
@@ -98,19 +133,8 @@ public class lightSensor extends AppCompatActivity {
 
             }
         });
-        //addValue();
     }
-
-    /*
-    lightDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-      @Override
-      void onDataChange(DataSnapshot snapshot) {
-        if (snapshot.hasChild("name")) {
-          // run some code
-        }
-      }
-    });
-    */
+    // Check the value
     public void checkValue() {
             if (light1.equals(On)) {
                 imageView1.setImageDrawable(getDrawable(R.drawable.light_bulbon));
@@ -127,7 +151,7 @@ public class lightSensor extends AppCompatActivity {
                 light2Switch.setChecked(false);
             }
     }
-
+    // Adding value to Database
     public void addValue() {
         String id = lightDatabase.push().getKey();
         light Light = new light(id, light1, light2);
