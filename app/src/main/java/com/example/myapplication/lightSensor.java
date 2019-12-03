@@ -81,7 +81,7 @@ public class lightSensor extends AppCompatActivity {
                 light2 = dataSnapshot.child("light2").getValue().toString();
                 if (light1 == "On") {
                     imageView1.setImageDrawable(getDrawable(R.drawable.light_bulbon));
-                    //light1Switch.setChecked(true);
+                    light1Switch.setChecked(true);
                 }
                 else {
                     imageView1.setImageDrawable(getDrawable(R.drawable.light_bulboff));
