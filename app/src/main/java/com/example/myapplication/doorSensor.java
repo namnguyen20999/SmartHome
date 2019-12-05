@@ -28,13 +28,13 @@ class door{
     String frontDoor;
     String backDoor;
    // String garage;
-/*
+
     public door() {
 
     }
-*/
-    public door( String frontDoor, String backDoor) {
-        this.Id = Id;
+
+    public door(String Id, String frontDoor, String backDoor) {
+       this.Id = Id;
         this.frontDoor = frontDoor;
         this.backDoor = backDoor;
     }
@@ -58,8 +58,8 @@ public class doorSensor extends AppCompatActivity {
     private Switch frontDoorSwitch;
     private Switch backDoorSwitch;
     private Switch garageSwitch;
-    private String frontDoorButton;
-    private String backDoorButton;
+    private String frontDoor;
+    private String backDoor;
     private String garageButton;
     private String On = "On";
     private String Off = "Off";
@@ -92,11 +92,11 @@ public class doorSensor extends AppCompatActivity {
             public void onClick(View v) {
                 if (frontDoorSwitch.isChecked()) {
                     Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
-                    frontDoorButton = On;
+                    frontDoor = On;
                     addValue();
                 } else {
                     Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
-                    frontDoorButton = Off;
+                    frontDoor = Off;
                     addValue();
                 }
             }
@@ -104,47 +104,20 @@ public class doorSensor extends AppCompatActivity {
         backDoorSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (backDoorSwitch.isChecked()) {
+                if ( backDoorSwitch.isChecked()) {
                     Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
-                    backDoorButton = On;
+                    backDoor = On;
                     addValue();
                 } else {
                     Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
-                    backDoorButton = Off;
+                    backDoor = Off;
                     addValue();
                 }
             }
         });
-        /*
-        frontDoorSwitch.setOnClickListener(v)
-            @Override
-            public void onClick(View v) {
-                if(frontDoorSwitch.isChecked()){
-                    Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
-                    frontDoorButton = On;
-                    addValue();
-                }   else {
-                    Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
-                    frontDoorButton = Off;
-                    addValue();
-                }
-            }
-        });
-        backDoorSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (backDoorSwitch.isChecked()) {
-                    Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
-                    backDoorButton = On;
-                    addValue();
-                }   else {
-                    Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
-                    backDoorButton = Off;
-                    addValue();
-                }
-            }
-        });
-*/
+
+
+
   /*      garageSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,27 +136,27 @@ public class doorSensor extends AppCompatActivity {
         doorDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child("frontDoorButton").exists()){
-                    frontDoorButton = dataSnapshot.child("frontDoorButton").getValue(String.class);
-                    backDoorButton  = dataSnapshot.child("backDoorButton").getValue(String.class);
+                if(dataSnapshot.child("frontDoor").exists()){
+                    frontDoor = dataSnapshot.child("frontDoor").getValue(String.class);
+                    backDoor  = dataSnapshot.child("backDoor").getValue(String.class);
                 //    garageButton    = dataSnapshot.child("garage door").getValue(String.class);
                     checkValue();
                 }   else {
-                    frontDoorButton = Off;
-                    backDoorButton = Off;
+                    frontDoor = Off;
+                    backDoor = Off;
                 //    garageButton = Off;
-                    checkValue();
+                    addValue();
                 }
-                if(dataSnapshot.child("backDoorButton").exists()){
-                    frontDoorButton = dataSnapshot.child("frontDoorButton").getValue(String.class);
-                    backDoorButton  = dataSnapshot.child("backDoorButton").getValue(String.class);
+                if(dataSnapshot.child("backDoor").exists()){
+                    frontDoor = dataSnapshot.child("frontDoor").getValue(String.class);
+                    backDoor  = dataSnapshot.child("backDoor").getValue(String.class);
                 //    garageButton    = dataSnapshot.child("garage door").getValue(String.class);
                     checkValue();
                 }   else {
-                    frontDoorButton = Off;
-                    backDoorButton = Off;
+                    frontDoor = Off;
+                    backDoor = Off;
                 //    garageButton = Off;
-                    checkValue();
+                    addValue();
                 }
                 /* if(dataSnapshot.child("garage door").exists()){
                     frontDoorButton = dataSnapshot.child("front door").getValue(String.class);
@@ -206,14 +179,14 @@ public class doorSensor extends AppCompatActivity {
     }
 
     public void checkValue(){
-        if(frontDoorButton.equals(On)){
+        if(frontDoor.equals(On)){
             Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
             frontDoorSwitch.setChecked(true);
         }   else {
             Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
             frontDoorSwitch.setChecked(false);
         }
-        if(backDoorButton.equals(On)){
+        if(backDoor.equals(On)){
             Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
             backDoorSwitch.setChecked(true);
         }   else {
@@ -230,8 +203,8 @@ public class doorSensor extends AppCompatActivity {
     }
 
     public void addValue(){
-   //    String id = doorDatabase.push().getKey();
-        door Door = new door(frontDoorButton, backDoorButton);
+       String id = doorDatabase.push().getKey();
+        door Door = new door(id,frontDoor, backDoor);
         doorDatabase.setValue(Door);
     }
 }
