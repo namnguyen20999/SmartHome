@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".doorSensor">
+    tools:context=".doorSensor"
+    android:background="@drawable/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -19,11 +20,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview"
+        android:textSize="20sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933" />
+        app:layout_constraintVertical_bias="0.707" />
 
     <Switch
         android:id="@+id/front"
@@ -32,13 +35,13 @@
         android:text="@string/front_door"
         android:textOff="@string/unlock"
         android:textOn="@string/lock"
-        android:textSize="25sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.251" />
 
     <Switch
         android:id="@+id/backdoor"
@@ -47,36 +50,33 @@
         android:text="@string/back_door"
         android:textOff="@string/unlock"
         android:textOn="@string/lock"
-        android:textSize="25sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.546" />
 
-    <Switch
-        android:id="@+id/gar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/garage"
-        android:textOff="@string/unlock"
-        android:textOn="@string/lock"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_date"
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="143dp"
+        android:layout_height="157dp"
+        app:layout_constraintBottom_toTopOf="@+id/front"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.323" />
+        app:srcCompat="@drawable/sdoor" />
 
-    <Button
-        android:id="@+id/doneButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/view_date"
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="124dp"
+        android:layout_height="139dp"
+        app:layout_constraintBottom_toTopOf="@+id/backdoor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gar" />
+        app:layout_constraintTop_toBottomOf="@+id/front"
+        app:srcCompat="@drawable/sdoor" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

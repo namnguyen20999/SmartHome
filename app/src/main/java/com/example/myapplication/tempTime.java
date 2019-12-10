@@ -1,26 +1,20 @@
 package com.example.myapplication;
 
-
-public class temperature {
+public class tempTime {
 
     String temperature;
-    String tempId;
     String date;
-    public temperature() {
+    public tempTime() {
 
     }
 
-    public temperature(String temperature, String tempId, String date) {
+    public tempTime(String temperature, String date) {
         this.temperature = temperature;
-        this.tempId = tempId;
         this.date = date;
     }
 
     public String getTemperature() {
         return temperature;
-    }
-    public String getTempId(){
-        return tempId;
     }
     public String getDate(){
         return date;

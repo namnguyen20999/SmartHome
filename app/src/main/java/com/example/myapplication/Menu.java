@@ -69,7 +69,8 @@ public class Menu extends AppCompatActivity {
         ventilation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openVentilation();
+               // System.exit (0);
+                finishAndRemoveTask();
             }
         });
         }

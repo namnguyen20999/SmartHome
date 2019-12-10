@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 class door{
     String Id;
@@ -79,10 +80,10 @@ public class doorSensor extends AppCompatActivity {
 
         frontDoorSwitch = findViewById(R.id.front);
         backDoorSwitch = findViewById(R.id.backdoor);
-        garageSwitch = findViewById(R.id.gar);
+      //  garageSwitch = findViewById(R.id.gar);
 
         Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+        String currentDate = DateFormat.getDateTimeInstance ().format(new Date());
 
         TextView textViewDate = findViewById(R.id.view_date);
         textViewDate.setText(currentDate);
@@ -91,11 +92,11 @@ public class doorSensor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (frontDoorSwitch.isChecked()) {
-                    Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
                     frontDoor = On;
                     addValue();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
                     frontDoor = Off;
                     addValue();
                 }
@@ -109,7 +110,7 @@ public class doorSensor extends AppCompatActivity {
                     backDoor = On;
                     addValue();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
                     backDoor = Off;
                     addValue();
                 }
@@ -180,17 +181,17 @@ public class doorSensor extends AppCompatActivity {
 
     public void checkValue(){
         if(frontDoor.equals(On)){
-            Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
             frontDoorSwitch.setChecked(true);
         }   else {
-            Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), "Front Door: " + frontDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
             frontDoorSwitch.setChecked(false);
         }
         if(backDoor.equals(On)){
-            Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOn().toString(), Toast.LENGTH_SHORT).show();
             backDoorSwitch.setChecked(true);
         }   else {
-            Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getApplicationContext(), "Back Door: " + backDoorSwitch.getTextOff().toString(), Toast.LENGTH_SHORT).show();
             backDoorSwitch.setChecked(false);
         }
         /* if(garageButton.equals(On)){
