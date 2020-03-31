@@ -35,15 +35,15 @@ public class thermometer extends AppCompatActivity {
         Date = findViewById (R.id.date);
         //Create data
 
-        String path = "/userdata/"+ mAuth.getUid() + "/temperature";
+        String path = "/userdata/temperature";
         tempData = FirebaseDatabase.getInstance().getReference(path);
 
         // Obtaining data from firebase and push to app
         tempData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange (@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child ("temperature").exists ()) {
-                    tempValue = dataSnapshot.child("temperature").getValue().toString();
+                if (dataSnapshot.child ("value").exists ()) {
+                    tempValue = dataSnapshot.child("value").getValue().toString();
                     Temp.setText(tempValue);
                 } else {
                     addValue();
@@ -57,7 +57,7 @@ public class thermometer extends AppCompatActivity {
         tempData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                tempValue = dataSnapshot.child("temperature").getValue().toString();
+                tempValue = dataSnapshot.child("value").getValue().toString();
                 Temp.setText(tempValue);
                 addTime();
                 timeData = dataSnapshot.child("date").getValue ().toString ();
@@ -75,9 +75,8 @@ public class thermometer extends AppCompatActivity {
     public void addValue() {
         Temp = findViewById(R.id.temperature);
         String tempValue = Temp.getText().toString().trim();
-        String id = tempData.push().getKey();
         String date = DateFormat.getDateTimeInstance ().format(new Date ());
-        temperature Temperature = new temperature(tempValue, id, date);
+        temperature Temperature = new temperature(tempValue, date);
         tempData.setValue(Temperature);
     }
 
@@ -87,7 +86,7 @@ public class thermometer extends AppCompatActivity {
         //tempTime temptime = new tempTime(tempValue, date);
 
         Map<String, Object> data = new HashMap<>();
-        data.put("temperature", tempValue);
+        data.put("value", tempValue);
         data.put("date", date);
 
         tempData.updateChildren(data);

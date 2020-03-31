@@ -63,7 +63,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/feature1"
-                        android:src="@drawable/menu_light"
+                        android:src="@drawable/menu_thermometer"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -74,7 +74,7 @@
                         android:layout_marginTop="12dp"
                         android:textColor="#000000"
                         android:textSize="18sp"
-                        android:text="Light"
+                        android:text="Thermometer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -82,79 +82,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="50dp"
-                android:layout_margin="12dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center">
-                    <ImageView
-                        android:id="@+id/camera"
-                        android:src="@drawable/menu_camera_motion"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp">
-
-                    </ImageView>
-
-                    <TextView
-                        android:textAlignment="center"
-                        android:layout_marginTop="12dp"
-                        android:textColor="#000000"
-                        android:textSize="18sp"
-                        android:text="Motion Camera"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="50dp"
-                android:layout_margin="12dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center">
-                    <ImageView
-                        android:id="@+id/door"
-                        android:src="@drawable/menu_door"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp">
-
-                    </ImageView>
-
-                    <TextView
-                        android:textAlignment="center"
-                        android:layout_marginTop="12dp"
-                        android:textColor="#000000"
-                        android:textSize="18sp"
-                        android:text="Door"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </TextView>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -174,7 +101,7 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/thermometer"
-                        android:src="@drawable/menu_thermometer"
+                        android:src="@drawable/menu_light"
                         android:layout_width="80dp"
                         android:layout_height="80dp">
 
@@ -185,7 +112,7 @@
                         android:layout_marginTop="12dp"
                         android:textColor="#000000"
                         android:textSize="18sp"
-                        android:text="Thermometer"
+                        android:text="Sensitivity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
